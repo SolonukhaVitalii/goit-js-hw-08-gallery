@@ -1,27 +1,35 @@
 import images from './gallery-items.js';
 console.log(images);
 
-/*const galleryContainer = document.querySelector('.gallery');
-const reducedString = images.reduce(acc,{preview, original, description})=>{
-  acc +=
-  '<li class="gallery__item"><a class="gallery__link"href="${original}"><img class="gallery__image"src="${preview}"data-source="${original}"alt="${description}"/></a></li>';
-  return acc});
-  galleryContainer.insertAdjacentHTML('afterbegin', reducedString);
-  */
+const galleryContainer = document.querySelector('.gallery');
+const reducedString = images.reduce(( acc, { preview, original, description }) => {
+	acc += `<li class="gallery__item"><a class="gallery__link"href="${original}"><img class="gallery__image"src="${preview}"data-source="${original}"alt="${description}"/></a></li>`;
+	return acc;
+},
+   '');
+console.log(reducedString)
 
+galleryContainer.insertAdjacentHTML( "beforeend", reducedString);
+galleryContainer.addEventListener('click', onClick);
 
-  
- /* const galleryRef = document.querySelector('.gallery');
-  
-  images.forEach(el =>
-    galleryRef.insertAdjacentHTML(
-      'beforeend',
-      `<li class="gallery__item"><a class="gallery__link"href="${original}"><img class="gallery__image"src="${preview}"data-source="${original}"alt="${description}"/></a></li>`,
-    ),
-  );
-  */
+const lightBox = document.querySelector('.js-lightbox');
 
- imagesEl.append(...images.map(el => {
-  const liRef = document.createElement("li");
-  liRef.textContent = el;
-  return liRef;});
+const openModal = document.querySelector('.lightbox__image');
+openModal.addEventListener('click', onOpenModal);
+function onOpenModal() {
+	window.addEventListener('keydown', onEscKeyPress);
+	lightBox.clssList.add('is-open')
+}
+
+const closeModalBtn = document.querySelector('[data-action="close-lightbox"]');
+closeModalBtn.addEventListener('click', onCloseModal);
+function onCloseModal() {
+	window.addEventListener('keydown', onEscKeyPress);
+	lightBox.classList.add('is-close');
+    lightBox.removeAttribute('src');
+    lightBox.removeAttribute("alt");
+}
+
+function onClick(evt) {
+	console.log(evt);
+}
