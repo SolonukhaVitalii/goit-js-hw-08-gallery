@@ -14,15 +14,15 @@ galleryContainer.addEventListener('click', onClick);
 
 const lightBox = document.querySelector('.js-lightbox');
 
-const openModal = document.querySelector('.lightbox__image');
-openModal.addEventListener('click', onOpenModal);
+const onOpenModal = document.querySelector('.lightbox__image');
+onOpenModal.addEventListener('click', onOpenModal);
 function onOpenModal() {
 	window.addEventListener('keydown', onEscKeyPress);
-	lightBox.clssList.add('is-open')
+	lightBox.classList.add('is-open');
 }
 
-const closeModal = document.querySelector('[data-action="close-lightbox"]');
-closeModal.addEventListener('click', onCloseModal);
+const onCloseModal = document.querySelector('[data-action="close-lightbox"]');
+onCloseModal.addEventListener('click', onCloseModal);
 function onCloseModal() {
 	window.addEventListener('keydown', onEscKeyPress);
 	lightBox.classList.add('is-close');
