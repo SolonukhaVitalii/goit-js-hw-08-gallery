@@ -7,22 +7,22 @@ const reducedString = images.reduce(( acc, { preview, original, description }) =
 	return acc;
 },
    '');
-console.log(reducedString)
+console.log(reducedString);
 
 galleryContainer.insertAdjacentHTML("beforeend", reducedString);
 galleryContainer.addEventListener('click', onClick);
 
 const lightBox = document.querySelector('.js-lightbox');
 
-const onOpenModal = document.querySelector('.lightbox__image');
-onOpenModal.addEventListener('click', onOpenModal);
+const openModal = document.querySelector('.lightbox__image');
+openModal.addEventListener('click', onOpenModal);
 function onOpenModal() {
 	window.addEventListener('keydown', onEscKeyPress);
 	lightBox.classList.add('is-open');
 }
 
-const onCloseModal = document.querySelector('[data-action="close-lightbox"]');
-onCloseModal.addEventListener('click', onCloseModal);
+const closeModal = document.querySelector('[data-action="close-lightbox"]');
+closeModal.addEventListener('click', onCloseModal);
 function onCloseModal() {
 	window.addEventListener('keydown', onEscKeyPress);
 	lightBox.classList.add('is-close');
