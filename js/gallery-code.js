@@ -9,7 +9,7 @@ const reducedString = images.reduce(( acc, { preview, original, description }) =
    '');
 console.log(reducedString)
 
-galleryContainer.insertAdjacentHTML( "beforeend", reducedString);
+galleryContainer.insertAdjacentHTML("beforeend", reducedString);
 galleryContainer.addEventListener('click', onClick);
 
 const lightBox = document.querySelector('.js-lightbox');
@@ -21,8 +21,8 @@ function onOpenModal() {
 	lightBox.clssList.add('is-open')
 }
 
-const closeModalBtn = document.querySelector('[data-action="close-lightbox"]');
-closeModalBtn.addEventListener('click', onCloseModal);
+const closeModal = document.querySelector('[data-action="close-lightbox"]');
+closeModal.addEventListener('click', onCloseModal);
 function onCloseModal() {
 	window.addEventListener('keydown', onEscKeyPress);
 	lightBox.classList.add('is-close');
@@ -31,5 +31,5 @@ function onCloseModal() {
 }
 
 function onClick(evt) {
-	console.log(evt);
+	console.log(evt.target);
 }
